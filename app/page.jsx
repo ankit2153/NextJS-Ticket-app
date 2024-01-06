@@ -1,34 +1,30 @@
-
 import TicketCard from "./(components)/TicketCard";
-
 import { useRouter } from "next/navigation";
 
 const getTickets = async () => {
-
   try {
-
     const res = await fetch("http://localhost:3000/api/Tickets", {
       cache: "no-store",
     });
-
     return res.json();
-
   } catch (error) {
     console.log("Failed to get Tickets", error);
+    return null; // Return null in case of an error
   }
 };
 
 const Home = async () => {
+  const data = await getTickets();
 
-  
-  const { tickets } = await getTickets();
+  if (!data) {
+    // Handle the case where data fetching fails
+    console.error("Data fetching failed");
+    return <div>Error loading data</div>;
+  }
 
+  const { tickets } = data;
 
-  const uniqueCategories = [
-
-    ...new Set(tickets?.map(({ category }) => category)),
-
-  ];
+  const uniqueCategories = [...new Set(tickets?.map(({ category }) => category))];
 
   return (
     <div className="p-4">
@@ -45,13 +41,8 @@ const Home = async () => {
                 {tickets
                   .filter((ticket) => ticket.category === uniqueCategory)
                   .map((filteredTicket, _index) => (
-                    <div className="p-2 ">
-                      <TicketCard
-                        
-                        key={_index}
-                        id={_index}
-                        ticket={filteredTicket}
-                      />
+                    <div className="p-2" key={_index}>
+                      <TicketCard id={_index} ticket={filteredTicket} />
                     </div>
                   ))}
               </div>
