@@ -1,7 +1,7 @@
 import mongoose,{Schema} from "mongoose";
 
 
-mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI);
+mongoose.connect("mongodb+srv://nextuser:next21@cluster0.dyx3nsy.mongodb.net/TicketsDB");
 
 
 mongoose.Promise = global.Promise;
