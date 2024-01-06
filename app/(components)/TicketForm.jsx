@@ -43,7 +43,7 @@ function TicketForm() {
     e.preventDefault();
 
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/Tickets`, {
+    const res = await fetch("/api/Tickets", {
       method: "POST",
       body: JSON.stringify({ formData }),
       "content-type": "application/json",
@@ -54,6 +54,12 @@ function TicketForm() {
     }
 
     router.refresh();
+
+    router.push('/');
+
+    router.refresh();
+
+
 
   
 
