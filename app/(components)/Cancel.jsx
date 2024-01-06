@@ -13,7 +13,7 @@ function Cancel({id}) {
 
   const DeleteTicket = async () =>{
 
-    const res = await fetch(`http://localhost:3000/api/Tickets/${id}`,{
+    const res = await fetch(`${process.env.DOMAIN}/api/Tickets/${id}`,{
       method:"DELETE"
     });
 
@@ -24,7 +24,7 @@ function Cancel({id}) {
     }
 
   } 
-  
+
   return (
     <div className='text-red-600 rounded-full' onClick={DeleteTicket}>
 

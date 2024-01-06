@@ -1,9 +1,10 @@
 import mongoose,{Schema} from "mongoose";
 
-const uri = "mongodb+srv://nextuser:next21@cluster0.dyx3nsy.mongodb.net/TicketsDB";
 
 
-mongoose.connect(uri);
+
+mongoose.connect(process.env.MONGO_URI);
+
 
 mongoose.Promise = global.Promise;
 
