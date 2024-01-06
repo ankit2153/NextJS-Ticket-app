@@ -13,7 +13,7 @@ function Cancel({id}) {
 
   const DeleteTicket = async () =>{
 
-    const res = await fetch(`${process.env.DOMAIN}/api/Tickets/${id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/Tickets/${id}`,{
       method:"DELETE"
     });
 

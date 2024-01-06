@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 function TicketForm() {
+  
   const router = useRouter();
 
   const prev = () => {
@@ -20,7 +21,6 @@ function TicketForm() {
     category: "Hardware Problem",
   };
 
-  
 
   const [formData, setformData] = useState(TicketData);
 
@@ -36,12 +36,14 @@ function TicketForm() {
     }));
   };
 
+
+
   const handleSubmit = async (e) => {
 
-   
     e.preventDefault();
 
-    const res = await fetch("/api/Tickets", {
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/Tickets`, {
       method: "POST",
       body: JSON.stringify({ formData }),
       "content-type": "application/json",
@@ -52,8 +54,9 @@ function TicketForm() {
     }
 
     router.refresh();
-    router.push("/");
-    router.refresh();
+
+    router.push('/');
+  
 
   };
 
