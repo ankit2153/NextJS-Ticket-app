@@ -1,6 +1,6 @@
-  "use client"
-  import TicketCard from "./(components)/TicketCard";
-  import { useRouter } from "next/navigation";
+
+import TicketCard from "./(components)/TicketCard";
+ 
 
   const getTickets = async () => {
     try {
@@ -8,10 +8,11 @@
 
         cache: "no-store",
       });
+
       return res.json();
     } catch (error) {
       console.log("Failed to get Tickets", error);
-      return null; // Return null in case of an error
+      
     }
   };
 
@@ -21,9 +22,9 @@
     const data = await getTickets();
 
     if (!data) {
-      // Handle the case where data fetching fails
+     
       console.error("Data fetching failed");
-      return <div>Error loading data</div>;
+      
     }
 
     const { tickets } = data;

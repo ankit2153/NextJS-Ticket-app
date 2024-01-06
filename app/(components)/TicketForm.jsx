@@ -55,7 +55,6 @@ function TicketForm() {
 
     router.refresh();
 
-    router.push('/');
   
 
   };
