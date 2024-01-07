@@ -55,6 +55,10 @@ function TicketForm() {
 
     router.refresh();
 
+    router.push(process.env.NEXT_PUBLIC_DOMAIN);
+
+    router.refresh()
+
     
 
 
