@@ -22,7 +22,7 @@ import TicketCard from "./(components)/TicketCard";
   const Home = async () => {
 
 
-    const { tickets } = await getTickets();
+    const { tickets } = await getTickets() || {tickets:[]};
 
     const uniqueCategories = [...new Set(tickets?.map(({ category }) => category))];
 
