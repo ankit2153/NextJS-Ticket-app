@@ -4,13 +4,16 @@ import TicketCard from "./(components)/TicketCard";
 
   const getTickets = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/Tickets`, {
+      const res = await fetch("http://localhost:3000/api/Tickets", {
 
         cache: "no-store",
+
       });
 
       return res.json();
+
     } catch (error) {
+
       console.log("Failed to get Tickets", error);
       
     }
@@ -19,15 +22,7 @@ import TicketCard from "./(components)/TicketCard";
   const Home = async () => {
 
 
-    const data = await getTickets();
-
-    if (!data) {
-     
-      console.error("Data fetching failed");
-      
-    }
-
-    const { tickets } = data;
+    const { tickets } = await getTickets();
 
     const uniqueCategories = [...new Set(tickets?.map(({ category }) => category))];
 
